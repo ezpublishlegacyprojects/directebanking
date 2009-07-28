@@ -45,6 +45,7 @@ class directeBankingGateway extends eZRedirectGateway
         );
         
         $data_serial = implode( '|', $data );
+        unset['project_password'];
         switch( strtolower($directebankingINI->variable( 'EbankingSettings', 'InputCheckType' )) )
         {
             case 'sha1':

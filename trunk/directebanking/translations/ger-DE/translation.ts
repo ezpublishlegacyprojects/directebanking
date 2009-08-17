@@ -2,12 +2,58 @@
 <context>
     <name>extension/directebanking/common</name>
     <message>
-        <source>DIRECTebanking</source>
-        <translation>sofortüberweisung</translation>
+        <source>DIRECTebanking.com</source>
+        <translation>sofortüberweisung.de</translation>
     </message>
     <message>
-        <source>Order</source>
-        <translation>Bestellung</translation>
+        <source>OrderID</source>
+        <translation>Bestell-ID</translation>
+    </message>
+    <message>
+        <source>Submit</source>
+        <translation>Abrufen</translation>
+    </message>
+</context>
+<context>
+    <name>extension/directebanking/modules</name>
+    <message>
+        <source>Profile</source>
+        <translation>Profil</translation>
+    </message>
+    <message>
+        <source>1-Click-Installation</source>
+        <translation>1-Click-Installation</translation>
+    </message>
+    <message>
+        <source>view</source>
+        <translation>Ansicht</translation>
+    </message>
+    <message>
+        <source>edit</source>
+        <translation>bearbeiten</translation>
+    </message>
+    <message>
+        <source>update</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>attributte</source>
+        <translation>Attribut</translation>
+    </message>
+    <message>
+        <source>value</source>
+        <translation>Wert</translation>
+    </message>
+    <message>
+        <source>create new</source>
+        <translation>Anlegen</translation>
+    </message>
+</context>
+<context>
+    <name>kernel/navigationpart</name>
+    <message>
+        <source>DIRECTebanking.com</source>
+        <translation>sofortüberweisung.de</translation>
     </message>
 </context>
 </TS>

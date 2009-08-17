@@ -18,12 +18,18 @@ if( $checker->createDataFromPOST() )
               if( $checker->ini->variable( 'OrderItemSettings', 'AddOrderItem' ) == 'true' )
               {
                   $orderItem = new eZOrderItem( array( 'order_id' => $orderID,
-                                                       'description' => ezi18n( 'extension/directebanking/common', 'DIRECTebanking' ),
+                                                       'description' => ezi18n( 'extension/directebanking/common', 'DIRECTebanking.com' ),
                                                        'price' => $checker->ini->variable( 'OrderItemSettings', 'EbankingCosts' ),
                                                        'vat_value' => $checker->ini->variable( 'OrderItemSettings', 'VAT' ),
                                                        'is_vat_inc' => ($checker->ini->variable( 'OrderItemSettings', 'IsVATIncluded' )=='true')?1:0,
                                                        'type' => 'paymentgatewayhandler' ) );
                   $orderItem->store();
+              }
+              if( $checker->ini->variable( 'WebShopSettings', 'SetConfirmedStatus' ) == 'enabled' )
+              {
+                  $confirmedStatus = $checker->ini->variable( 'WebShopSettings','ConfirmStatusID' );
+          		    $order = eZOrder::fetch($orderID);
+          		    $order->modifyStatus($confirmedStatus, 14);
               }
               $checker->approvePayment();
           }

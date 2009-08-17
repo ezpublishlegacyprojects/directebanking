@@ -4,6 +4,6 @@
 TranslationExtensions[]=directebanking
 
 [RoleSettings]
-PolicyOmitList[]=directebanking
+PolicyOmitList[]=directebanking/notificate
 
 */ ?>

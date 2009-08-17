@@ -33,7 +33,7 @@ class directeBankingGateway extends eZRedirectGateway
             'sender_country_id'     => '',
             'amount'                => $order->attribute('total_inc_vat'),
             'currency_id'           => $order->currencyCode(),
-            'reason_1'              => ezi18n( 'extension/directebanking/common', 'Order' ) . " " . $order->ID,
+            'reason_1'              => ezi18n( 'extension/directebanking/common', 'OrderID' ) . " " . $order->ID,
             'reason_2'              => '',
             'user_variable_0'       => '',
             'user_variable_1'       => $orderID,
@@ -45,7 +45,7 @@ class directeBankingGateway extends eZRedirectGateway
         );
         
         $data_serial = implode( '|', $data );
-        unset['project_password'];
+        unset( $data['project_password'] );
         switch( strtolower($directebankingINI->variable( 'EbankingSettings', 'InputCheckType' )) )
         {
             case 'sha1':
@@ -59,22 +59,15 @@ class directeBankingGateway extends eZRedirectGateway
                 $hash = hash('md5', $data_serial );
             }break;
         }
+        $data['hash'] = $hash;
         
-        $server_uri = $directebankingINI->variable( 'ServerSettings', 'RequestURL' );
-        
-        $variables = '?';
-        foreach( $data as $key => $value )
-        {
-            if( trim($value) != '' )
-            {
-                $variables .= $key.'='.$value.'&';
-            }
-        }
-        $check = 'hash='.$hash;
+        $server_uri = $directebankingINI->variable( 'ServerSettings', 'RequestURL' ) . '?';
+        $server_uri .= http_build_query( $data, null, '&' );
+
         return $server_uri.$variables.$check;
     }
 }
 
-eZPaymentGatewayType::registerGateway( directeBankingGateway::EZ_PAYMENT_GATEWAY_TYPE_EBANKING, "directebankinggateway", ezi18n( 'extension/directebanking/common', 'DIRECTebanking' ) );
+eZPaymentGatewayType::registerGateway( directeBankingGateway::EZ_PAYMENT_GATEWAY_TYPE_EBANKING, "directebankinggateway", ezi18n( 'extension/directebanking/common', 'DIRECTebanking.com' ) );
 
 ?>

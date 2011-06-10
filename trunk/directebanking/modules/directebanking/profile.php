@@ -5,7 +5,7 @@ include_once('kernel/common/template.php');
 $Module = $Params['Module'];
 $view = $Params['view'];
 
-$tpl = templateInit();
+$tpl = eZTemplate::factory();
 $ini = eZINI::instance( "directebanking.ini" );
 $http = eZHTTPTool::instance();
 
@@ -58,7 +58,7 @@ $Result = array();
 $Result['pagelayout'] = true;
 $Result['content'] = $tpl->fetch( 'design:directebanking/'.$template );
 $Result['path'] = array( array( 'url' => '/directebanking/profile/'.$view,
-                                'text' => ezi18n( 'extension/directebanking/common', 'DIRECTebanking.com' )
+                                'text' => ezpI18n::tr( 'extension/directebanking/common', 'DIRECTebanking.com' )
                          )
                   );
 $Result['left_menu'] = 'design:directebanking/left_menu.tpl';

@@ -33,7 +33,7 @@ class directeBankingGateway extends eZRedirectGateway
             'sender_country_id'     => '',
             'amount'                => $order->attribute('total_inc_vat'),
             'currency_id'           => $order->currencyCode(),
-            'reason_1'              => ezi18n( 'extension/directebanking/common', 'OrderID' ) . " " . $order->ID,
+            'reason_1'              => ezpI18n::tr( 'extension/directebanking/common', 'OrderID' ) . " " . $order->ID,
             'reason_2'              => '',
             'user_variable_0'       => '',
             'user_variable_1'       => $orderID,
@@ -68,6 +68,6 @@ class directeBankingGateway extends eZRedirectGateway
     }
 }
 
-eZPaymentGatewayType::registerGateway( directeBankingGateway::EZ_PAYMENT_GATEWAY_TYPE_EBANKING, "directebankinggateway", ezi18n( 'extension/directebanking/common', 'DIRECTebanking.com' ) );
+eZPaymentGatewayType::registerGateway( directeBankingGateway::EZ_PAYMENT_GATEWAY_TYPE_EBANKING, "directebankinggateway", ezpI18n::tr( 'extension/directebanking/common', 'DIRECTebanking.com' ) );
 
 ?>

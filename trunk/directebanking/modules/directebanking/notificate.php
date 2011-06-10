@@ -1,7 +1,5 @@
 <?php
 
-ext_activate( 'directebanking', 'classes/directebankingchecker.php' );
-
 $checker = new directeBankingChecker( 'directebanking.ini' );
 
 if( $checker->createDataFromPOST() )
@@ -18,7 +16,7 @@ if( $checker->createDataFromPOST() )
               if( $checker->ini->variable( 'OrderItemSettings', 'AddOrderItem' ) == 'true' )
               {
                   $orderItem = new eZOrderItem( array( 'order_id' => $orderID,
-                                                       'description' => ezi18n( 'extension/directebanking/common', 'DIRECTebanking.com' ),
+                                                       'description' => ezpI18n::tr( 'extension/directebanking/common', 'DIRECTebanking.com' ),
                                                        'price' => $checker->ini->variable( 'OrderItemSettings', 'EbankingCosts' ),
                                                        'vat_value' => $checker->ini->variable( 'OrderItemSettings', 'VAT' ),
                                                        'is_vat_inc' => ($checker->ini->variable( 'OrderItemSettings', 'IsVATIncluded' )=='true')?1:0,
